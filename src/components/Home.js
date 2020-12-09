@@ -58,7 +58,7 @@ const Home = () => {
                 </div>
                 <div className="img-buttons">
                   <a
-                    // download="filename.png"
+                    //handles download, and takes user back to home
                     href="/"
                     onClick={handleDownload}
                     className="download-btn"
