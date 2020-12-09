@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState } from "react";
 import Header from "./header";
 import { MdCloudUpload } from "react-icons/md";
 import screenshot from "image-screenshot";
@@ -6,9 +6,6 @@ import screenshot from "image-screenshot";
 const Home = () => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [selectedFilter, setSelectedFilter] = useState("none");
-
-  const canvas = useRef("");
-  const mainImage = useRef("");
 
   function handleChange(event) {
     setSelectedFile(URL.createObjectURL(event.target.files[0]));
@@ -29,16 +26,6 @@ const Home = () => {
     screenshot(img).download(imgName);
   };
 
-  useEffect(() => {
-    const canvasEl = canvas.current;
-    const mainImageEl = mainImage.current;
-    if (mainImageEl !== "") {
-      let ctx = canvasEl.getContext("2d");
-      console.log(mainImageEl);
-      ctx.drawImage(mainImageEl, 0, 0, 1100, 1000);
-    }
-  }, [selectedFilter]);
-
   return (
     <>
       <div className="home">
@@ -53,7 +40,6 @@ const Home = () => {
                     id="ava-image"
                     style={{ filter: `${selectedFilter}` }}
                     alt=""
-                    ref={mainImage}
                   />
                 </div>
                 <div className="img-buttons">
@@ -105,9 +91,6 @@ const Home = () => {
             </>
           )}
         </section>
-        <div className="canvas-container">
-          <canvas ref={canvas} id="canvas"></canvas>
-        </div>
       </div>
     </>
   );
