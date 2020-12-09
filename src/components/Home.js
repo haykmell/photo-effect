@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import Header from "./header";
 import { MdCloudUpload } from "react-icons/md";
-import screenshot from "image-screenshot";
+import screenshot from 'image-screenshot'
 
 const Home = () => {
   const [selectedFile, setSelectedFile] = useState(null);
@@ -25,9 +25,15 @@ const Home = () => {
   const handleDownload = () => {
     const img = document.getElementById("ava-image");
     //image name
+<<<<<<< HEAD
     const imgName = `img${Date.now()}`;
     screenshot(img).download(imgName);
   };
+=======
+    const imgName = `img${Date.now()}`
+    screenshot(img).download(imgName)    
+  }
+>>>>>>> 90e21f33b2aaec2363e8fe8d53563d9e73cae654
 
   useEffect(() => {
     const canvasEl = canvas.current;
@@ -109,6 +115,7 @@ const Home = () => {
           <canvas ref={canvas} id="canvas"></canvas>
         </div>
       </div>
+      {/* happy */}
     </>
   );
 };
