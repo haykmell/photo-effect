@@ -28,92 +28,89 @@ const Home = () => {
     const imgName = `img${Date.now()}`;
     screenshot(img).download(imgName);
   };
-  const imgName = `img${Date.now()}`;
-  screenshot(img).download(imgName);
-};
 
-useEffect(() => {
-  const canvasEl = canvas.current;
-  const mainImageEl = mainImage.current;
-  if (mainImageEl !== "") {
-    let ctx = canvasEl.getContext("2d");
-    console.log(mainImageEl);
-    ctx.drawImage(mainImageEl, 0, 0, 1100, 1000);
-  }
-}, [selectedFilter]);
+  useEffect(() => {
+    const canvasEl = canvas.current;
+    const mainImageEl = mainImage.current;
+    if (mainImageEl !== "") {
+      let ctx = canvasEl.getContext("2d");
+      console.log(mainImageEl);
+      ctx.drawImage(mainImageEl, 0, 0, 1100, 1000);
+    }
+  }, [selectedFilter]);
 
-return (
-  <>
-    <div className="home">
-      <Header />
-      <section className="home-block">
-        {selectedFile ? (
-          <div className="filter">
-            <div className="img-container">
-              <div className="img">
-                <img
-                  src={selectedFile}
-                  id="ava-image"
-                  style={{ filter: `${selectedFilter}` }}
-                  alt=""
-                  ref={mainImage}
-                />
-              </div>
-              <div className="img-buttons">
-                <a
-                  // download="filename.png"
-                  href="/"
-                  onClick={handleDownload}
-                  className="download-btn"
-                >
-                  DOWNLOAD
-                </a>
-              </div>
-            </div>
-            <div className="filter-block">
-              {filter.map((effect, index) => {
-                return (
-                  <div
-                    onClick={() => {
-                      setSelectedFilter(effect.effect);
-                    }}
-                    className="filter-img-container"
-                    key={index}
+  return (
+    <>
+      <div className="home">
+        <Header />
+        <section className="home-block">
+          {selectedFile ? (
+            <div className="filter">
+              <div className="img-container">
+                <div className="img">
+                  <img
+                    src={selectedFile}
+                    id="ava-image"
+                    style={{ filter: `${selectedFilter}` }}
+                    alt=""
+                    ref={mainImage}
+                  />
+                </div>
+                <div className="img-buttons">
+                  <a
+                    // download="filename.png"
+                    href="/"
+                    onClick={handleDownload}
+                    className="download-btn"
                   >
-                    <img
-                      src={selectedFile}
-                      style={{ filter: `${effect.effect}` }}
-                      alt=""
-                    />
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        ) : (
-          <>
-            <div className="home-block-upload">
-              <div className="upload-icon">
-                <MdCloudUpload />
+                    DOWNLOAD
+                  </a>
+                </div>
               </div>
-              <label className="custom-file-upload">
-                <input
-                  type="file"
-                  accept="image/x-png,image/jpeg"
-                  onChange={(e) => handleChange(e)}
-                />
-                UPLOAD IMAGE
-              </label>
+              <div className="filter-block">
+                {filter.map((effect, index) => {
+                  return (
+                    <div
+                      onClick={() => {
+                        setSelectedFilter(effect.effect);
+                      }}
+                      className="filter-img-container"
+                      key={index}
+                    >
+                      <img
+                        src={selectedFile}
+                        style={{ filter: `${effect.effect}` }}
+                        alt=""
+                      />
+                    </div>
+                  );
+                })}
+              </div>
             </div>
-          </>
-        )}
-      </section>
-      <div className="canvas-container">
-        <canvas ref={canvas} id="canvas"></canvas>
+          ) : (
+            <>
+              <div className="home-block-upload">
+                <div className="upload-icon">
+                  <MdCloudUpload />
+                </div>
+                <label className="custom-file-upload">
+                  <input
+                    type="file"
+                    accept="image/x-png,image/jpeg"
+                    onChange={(e) => handleChange(e)}
+                  />
+                  UPLOAD IMAGE
+                </label>
+              </div>
+            </>
+          )}
+        </section>
+        <div className="canvas-container">
+          <canvas ref={canvas} id="canvas"></canvas>
+        </div>
       </div>
-    </div>
-    {/* happy */}
-  </>
-);
+    </>
+  );
+};
 
 export default Home;
