@@ -85,7 +85,11 @@ const Home = () => {
                   <MdCloudUpload />
                 </div>
                 <label className="custom-file-upload">
-                  <input type="file" onChange={(e) => handleChange(e)} />
+                  <input
+                    type="file"
+                    accept="image/x-png,image/jpeg"
+                    onChange={(e) => handleChange(e)}
+                  />
                   UPLOAD IMAGE
                 </label>
               </div>
