@@ -29,16 +29,6 @@ const Home = () => {
     screenshot(img).download(imgName);
   };
 
-  useEffect(() => {
-    const canvasEl = canvas.current;
-    const mainImageEl = mainImage.current;
-    if (mainImageEl !== "") {
-      let ctx = canvasEl.getContext("2d");
-      console.log(mainImageEl);
-      ctx.drawImage(mainImageEl, 0, 0, 1100, 1000);
-    }
-  }, [selectedFilter]);
-
   return (
     <>
       <div className="home">
@@ -105,9 +95,6 @@ const Home = () => {
             </>
           )}
         </section>
-        <div className="canvas-container">
-          <canvas ref={canvas} id="canvas"></canvas>
-        </div>
       </div>
     </>
   );
