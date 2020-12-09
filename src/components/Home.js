@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import Header from "./header";
 import { MdCloudUpload } from "react-icons/md";
+import screenshot from 'image-screenshot'
 
 const Home = () => {
   const [selectedFile, setSelectedFile] = useState(null);
@@ -19,6 +20,14 @@ const Home = () => {
     { effect: "contrast(200%)" },
     { effect: "grayscale(100%)" },
   ];
+
+  //handle download
+  const handleDownload = () => {
+    const img = document.getElementById("ava-image");
+    //image name
+    const imgName = `img${Date.now()}`
+    screenshot(img).download(imgName)    
+  }
 
   useEffect(() => {
     const canvasEl = canvas.current;
@@ -51,7 +60,7 @@ const Home = () => {
                   <a
                     // download="filename.png"
                     href="/"
-                    // onClick={}
+                    onClick={handleDownload}
                     className="download-btn"
                   >
                     DOWNLOAD
