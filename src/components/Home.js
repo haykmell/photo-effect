@@ -50,7 +50,7 @@ const Home = () => {
                 <div className="img-buttons">
                   <a
                     // download="filename.png"
-                    // href=""
+                    href="/"
                     // onClick={}
                     className="download-btn"
                   >
