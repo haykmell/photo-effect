@@ -100,6 +100,7 @@ const Home = () => {
           <canvas ref={canvas} id="canvas"></canvas>
         </div>
       </div>
+      {/* happy */}
     </>
   );
 };
