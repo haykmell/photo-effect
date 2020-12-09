@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState } from "react";
 import Header from "./header";
 import { MdCloudUpload } from "react-icons/md";
 import screenshot from "image-screenshot";
@@ -6,9 +6,6 @@ import screenshot from "image-screenshot";
 const Home = () => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [selectedFilter, setSelectedFilter] = useState("none");
-
-  const canvas = useRef("");
-  const mainImage = useRef("");
 
   function handleChange(event) {
     setSelectedFile(URL.createObjectURL(event.target.files[0]));
@@ -43,7 +40,6 @@ const Home = () => {
                     id="ava-image"
                     style={{ filter: `${selectedFilter}` }}
                     alt=""
-                    ref={mainImage}
                   />
                 </div>
                 <div className="img-buttons">
